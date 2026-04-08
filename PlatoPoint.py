@@ -8,8 +8,8 @@ import sys
 class PlatoPoint:
     def __init__(self):
         # 1. Define Payload Center
-        self.payload_center = SkyCoord(l=255.9375 * u.deg, 
-                                       b=-24.62432 * u.deg, 
+        self.payload_center = SkyCoord(l=255.9425 * u.deg, 
+                                       b=-24.63082 * u.deg, 
                                        frame='galactic')
         
         # 2. Define the "Master" Payload Frame
@@ -17,13 +17,12 @@ class PlatoPoint:
         # All "Parallel" definitions are relative to this frame.
         self.payload_frame = SkyOffsetFrame(origin=self.payload_center)
         
-        # 3. Geometry Constants
-        self.camera_offset_dist = 9.2 * u.deg
+        # 3. Geometry Constants - these have been iterated to best match the official results (97%)
         self.camera_azimuths = [45, 135, 225, 315] * u.deg
-        
-        self.circle_radius = 37.8/2 * u.deg
-        self.square_half_width = 18 * u.deg 
-        self.gap_half_width = (18.0 * u.arcmin).to(u.deg) / 2.0
+        self.camera_offset_dist = 9.193 * u.deg
+        self.circle_radius = 38.393/2 * u.deg
+        self.square_half_width = 17.705 * u.deg 
+        self.gap_half_width = (18.5 * u.arcmin).to(u.deg) / 2.0
         
         # 4. Pre-calculate Camera Group Centers in the Payload Frame
         # We perform the offset in the Master Frame to ensure rigid geometry
